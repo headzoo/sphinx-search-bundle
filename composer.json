@@ -1,14 +1,18 @@
 {
-  "name": "search/sphinxsearch-bundle",
+  "name": "headzoo/sphinx-search-bundle",
   "type": "symfony-bundle",
-  "description": "Sphinx search bundle for Symfony 2",
+  "description": "Sphinx search bundle for Symfony 2.",
   "keywords": ["sphinx", "sphinxsearch", "symfony2"],
-  "homepage": "https://github.com/timewasted/Search-SphinxsearchBundle",
+  "homepage": "https://github.com/headzoo/sphinx-search-bundle",
   "license": "BSD-2-Clause",
   "authors": [
     {
       "name": "Ryan Rogers",
       "email": "ryan@timewasted.me"
+    },
+    {
+      "name": "Sean Hickey",
+      "email": "sean@headzoo.io"
     }
   ],
   "require": {
