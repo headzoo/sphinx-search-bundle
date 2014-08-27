@@ -1,7 +1,5 @@
 <?php
-
-namespace Search\SphinxsearchBundle\DependencyInjection;
-
+namespace Headzoo\SphinxSearchBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
@@ -9,7 +7,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class SphinxsearchExtension extends Extension
+class SphinxSearchExtension extends Extension
 {
 	public function load(array $configs, ContainerBuilder $container)
 	{

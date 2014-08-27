@@ -1,8 +1,7 @@
 <?php
+namespace Headzoo\SphinxSearchBundle\Services\Search;
 
-namespace Search\SphinxsearchBundle\Services\Search;
-
-class Sphinxsearch
+class SphinxSearch
 {
 	/**
 	 * @var string $host
