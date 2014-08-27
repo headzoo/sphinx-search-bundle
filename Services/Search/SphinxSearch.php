@@ -107,6 +107,40 @@ class SphinxSearch
 		$this->sphinx->setFieldWeights($weights);
 	}
 
+    /**
+     * Group results by an attribute.
+     *
+     * @param string $attribute The name of the attribute.
+     * @param int $func Constant, applied to attribute value, one of the SPH_GROUPBY_ constants.
+     * @param string $groupsort An optional clause controlling how the groups are sorted.
+     */
+    public function setGroupBy($attribute, $func, $groupsort = "@group desc")
+    {
+        $this->sphinx->setGroupBy($attribute, $func, $groupsort);
+    }
+
+    /**
+     * Set ranking mode.
+     *
+     * @param int $ranker The ranker mode to be used.
+     * @param string $rankexpr The algebraic expression used for ranking.
+     */
+    public function setRankingMode($ranker, $rankexpr = "")
+    {
+        $this->sphinx->SetRankingMode($ranker, $rankexpr);
+    }
+
+    /**
+     * Set matches sorting mode.
+     *
+     * @param int $mode The sorting mode to be used.
+     * @param string $sortby The expression or the fields used for sorting.
+     */
+    public function setSortMode($mode, $sortby = "")
+    {
+        $this->sphinx->SetSortMode($mode, $sortby);
+    }
+
 	/**
 	 * Set the desired search filter.
 	 *
@@ -175,8 +209,10 @@ class SphinxSearch
 		 * Perform the query.
 		 */
 		$results = $this->sphinx->query($query, $indexNames);
-		if( $results['status'] !== SEARCHD_OK )
-			throw new \RuntimeException(sprintf('Searching index "%s" for "%s" failed with error "%s".', $label, $query, $this->sphinx->getLastError()));
+        if( $results['status'] === SEARCHD_ERROR )
+            throw new \RuntimeException(sprintf('Searching index "%s" for "%s" failed with error "%s".', $label, $query, $this->sphinx->getLastError()));
+        if( $results['status'] === SEARCHD_RETRY )
+            throw new \RuntimeException(sprintf('Searching index "%s" for "%s" failed with retry "%s".', $label, $query, $this->sphinx->getLastError()));
 
 		return $results;
 	}
