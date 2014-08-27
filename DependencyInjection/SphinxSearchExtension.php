@@ -18,32 +18,32 @@ class SphinxSearchExtension extends Extension
 
 		$loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
-		$loader->load('sphinxsearch.xml');
+		$loader->load('sphinx_search.xml');
 
 		/**
 		 * Indexer.
 		 */
 		if( isset($config['indexer']) ) {
-			$container->setParameter('search.sphinxsearch.indexer.bin', $config['indexer']['bin']);
+			$container->setParameter('search.sphinx_search.indexer.bin', $config['indexer']['bin']);
 		}
 
 		/**
 		 * Indexes.
 		 */
-		$container->setParameter('search.sphinxsearch.indexes', $config['indexes']);
+		$container->setParameter('search.sphinx_search.indexes', $config['indexes']);
 
 		/**
 		 * Searchd.
 		 */
 		if( isset($config['searchd']) ) {
-			$container->setParameter('search.sphinxsearch.searchd.host', $config['searchd']['host']);
-			$container->setParameter('search.sphinxsearch.searchd.port', $config['searchd']['port']);
-			$container->setParameter('search.sphinxsearch.searchd.socket', $config['searchd']['socket']);
+			$container->setParameter('search.sphinx_search.searchd.host', $config['searchd']['host']);
+			$container->setParameter('search.sphinx_search.searchd.port', $config['searchd']['port']);
+			$container->setParameter('search.sphinx_search.searchd.socket', $config['searchd']['socket']);
 		}
 	}
 
 	public function getAlias()
 	{
-		return 'sphinxsearch';
+		return 'sphinx_search';
 	}
 }

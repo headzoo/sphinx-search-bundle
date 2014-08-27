@@ -1,7 +1,5 @@
 <?php
-
 namespace Headzoo\SphinxSearchBundle\Services\Indexer;
-
 use Assetic\Util\ProcessBuilder;
 
 class Indexer
