@@ -20,8 +20,8 @@
   },
   "autoload": {
     "psr-0": {
-      "Search\\SphinxsearchBundle": ""
+      "Headzoo\\SphinxSearchBundle": ""
     }
   },
-  "target-dir": "Search/SphinxsearchBundle"
+  "target-dir": "Headzoo/SphinxSearchBundle"
 }
