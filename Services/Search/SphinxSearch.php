@@ -1,6 +1,8 @@
 <?php
 namespace Headzoo\SphinxSearchBundle\Services\Search;
 
+use use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
 class SphinxSearch
 {
 	/**
@@ -34,6 +36,11 @@ class SphinxSearch
 	 * @var SphinxClient $sphinx
 	 */
 	private $sphinx;
+	
+	/**
+	 * @var EventDispatcherInterface
+	 */
+	private $dispatcher;
 
 	/**
 	 * Constructor.
@@ -43,12 +50,13 @@ class SphinxSearch
 	 * @param string $socket The UNIX socket that the server is listening on.
 	 * @param array $indexes The list of indexes that can be used.
 	 */
-	public function __construct($host = 'localhost', $port = '9312', $socket = null, array $indexes = array())
+	public function __construct($host = 'localhost', $port = '9312', $socket = null, array $indexes = array(), EventDispatcherInterface $dispatcher)
 	{
 		$this->host = $host;
 		$this->port = $port;
 		$this->socket = $socket;
 		$this->indexes = $indexes;
+		$this->dispatcher = $dispatcher;
 
 		$this->sphinx = new \SphinxClient();
 		if( $this->socket !== null )
