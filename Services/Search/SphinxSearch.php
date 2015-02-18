@@ -1,7 +1,7 @@
 <?php
 namespace Headzoo\SphinxSearchBundle\Services\Search;
 
-use use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class SphinxSearch
 {
