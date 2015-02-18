@@ -216,12 +216,17 @@ class SphinxSearch
 		/**
 		 * Perform the query.
 		 */
+		$start   = round(microtime(true) * 1000);
 		$results = $this->sphinx->query($query, $indexNames);
         if( $results['status'] === SEARCHD_ERROR )
             throw new \RuntimeException(sprintf('Searching index "%s" for "%s" failed with error "%s".', $label, $query, $this->sphinx->getLastError()));
         if( $results['status'] === SEARCHD_RETRY )
             throw new \RuntimeException(sprintf('Searching index "%s" for "%s" failed with retry "%s".', $label, $query, $this->sphinx->getLastError()));
 
+		$end   = round(microtime(true) * 1000) - $start;
+                $event = new SearchEvent($query, $indexes, $end);
+                $this->dispatcher->dispatch("sphinx.event.search", $event);
+                
 		return $results;
 	}
 
