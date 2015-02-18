@@ -224,9 +224,9 @@ class SphinxSearch
             throw new \RuntimeException(sprintf('Searching index "%s" for "%s" failed with retry "%s".', $label, $query, $this->sphinx->getLastError()));
 
 		$end   = round(microtime(true) * 1000) - $start;
-                $event = new SearchEvent($query, $indexes, $end);
-                $this->dispatcher->dispatch("sphinx.event.search", $event);
-                
+        $event = new SearchEvent($query, $indexes, $end);
+        $this->dispatcher->dispatch("sphinx.event.search", $event);
+        
 		return $results;
 	}
 
