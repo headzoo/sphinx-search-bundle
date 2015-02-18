@@ -21,6 +21,7 @@
             <argument>%search.sphinx_search.searchd.port%</argument>
             <argument>%search.sphinx_search.searchd.socket%</argument>
             <argument>%search.sphinx_search.indexes%</argument>
+            <argument type="service" id="event_dispatcher" />
         </service>
     </services>
 </container>
